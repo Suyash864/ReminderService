@@ -18,17 +18,18 @@ const sendBasicEmail = async (mailFrom, mailTo, mailSubject, mailBody) => {
 }
 
 const fetchPendingEmails = async (timestamp) => {
+    console.log("Current Time:", new Date());
     try {
         const response = await repo.get({status: "PENDING"});
         return response;
     } catch (error) {
         console.log(error);
-    }
+    } 
 }
 
 const updateTicket = async (ticketId, data) => {
     try {
-        const response = await repo.get(ticketId, data);
+        const response = await repo.update(ticketId, data);
         return response;
     } catch (error) {
         console.log(error);
